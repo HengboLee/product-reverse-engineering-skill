@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#121212">
+  <title>{{PRODUCT_NAME}} 用户旅程图｜页面取证版</title>
+  <link rel="stylesheet" href="./report-theme.css">
+</head>
+<body data-report-profile="journey" data-report-order="1">
+  <header class="hero">
+    <div class="wrap">
+      <div class="report-sequence"><span class="report-sequence-index">01 / 04</span><span>用户旅程 · 页面取证</span></div>
+      <p class="eyebrow">Product reverse engineering · user journey</p>
+      <h1>{{HERO_CONCLUSION}}</h1>
+      <p class="lead">{{EXECUTIVE_SUMMARY}}</p>
+      <div class="hero-meta" aria-label="报告元数据">
+        <span class="pill"><b>快照</b>{{CAPTURE_DATE}}</span>
+        <span class="pill"><b>来源</b>{{SOURCE_COUNT}}</span>
+        <span class="pill"><b>访问</b>{{ACCESS_MODE}}</span>
+        <span class="pill"><b>证据终点</b>{{EVIDENCE_ENDPOINT}}</span>
+      </div>
+      <div class="legend" aria-label="证据等级">
+        <span class="tag fact">【页面事实】</span>
+        <span class="tag inference">【合理推断】</span>
+        <span class="tag unknown">【尚未确认】</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="page-nav" aria-label="页面目录">
+    <div class="wrap">
+      <a href="#scope">查看范围</a>
+      <a href="#unknown">无法确认</a>
+      <a href="#evidence">证据表</a>
+      <a href="#journey">旅程图</a>
+      <a href="#emotion">情绪与痛点</a>
+      <a href="#issues">关键问题</a>
+      <a href="#opportunities">机会点</a>
+      <a href="#notes">补充区</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section id="scope" class="report-section" data-report-section="1">
+      <header class="section-head"><div><h2>1. 本次查看范围</h2><p>说明看到什么、没做什么、时间线起点和证据能够证明的终点。</p></div></header>
+      <div class="section-body">
+        <div class="grid three">
+          <article class="semantic-card"><h3>查看范围</h3>{{SCOPE_CONTENT}}</article>
+          <article class="semantic-card"><h3>允许与禁止动作</h3>{{ACTION_BOUNDARY}}</article>
+          <article class="semantic-card"><h3>起点与证据终点</h3>{{START_AND_ENDPOINT}}</article>
+        </div>
+        <div class="callout fact">{{PRIMARY_EVIDENCE_CONCLUSION}}</div>
+      </div>
+    </section>
+
+    <section id="unknown" class="report-section" data-report-section="2">
+      <header class="section-head"><div><h2>2. 无法访问或无法确认的证据</h2><p>未观察不等于不存在；每个缺口说明对结论的影响和最小补证动作。</p></div></header>
+      <div class="section-body"><div class="table-wrap">{{UNKNOWN_EVIDENCE_TABLE}}</div></div>
+    </section>
+
+    <section id="evidence" class="report-section" data-report-section="3">
+      <header class="section-head"><div><h2>3. 用户旅程证据表</h2><p>先完成证据表，再绘图。每行都能回到页面原文、控件、对象、错误和来源。</p></div></header>
+      <div class="section-body">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>阶段</th><th>用户目标</th><th>用户动作</th><th>页面反馈</th><th>用户决定</th><th>页面/资产变化</th><th>问题或阻力</th><th>证据</th></tr></thead>
+            <tbody>{{JOURNEY_EVIDENCE_ROWS}}</tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="journey" class="report-section" data-report-section="4">
+      <header class="section-head"><div><h2>4. 三泳道用户旅程图</h2><p>每类路径只保留用户、产品界面、系统结果；判断节点写明分支条件。</p></div></header>
+      <div class="section-body">
+        <article class="journey-path" data-path-kind="normal">
+          <header class="path-head"><h3>正常主流程</h3><p>{{NORMAL_PATH_SUMMARY}}</p></header>
+          <div class="swimlane-scroll"><div class="swimlane" style="--steps:{{NORMAL_STEP_COUNT}}">{{NORMAL_SWIMLANE}}</div></div>
+        </article>
+        <article class="journey-path" data-path-kind="correction">
+          <header class="path-head"><h3>用户修改 / 纠偏流程</h3><p>{{CORRECTION_PATH_SUMMARY}}</p></header>
+          <div class="swimlane-scroll"><div class="swimlane" style="--steps:{{CORRECTION_STEP_COUNT}}">{{CORRECTION_SWIMLANE}}</div></div>
+        </article>
+        <article class="journey-path" data-path-kind="failure">
+          <header class="path-head"><h3>失败与中断流程</h3><p>{{FAILURE_PATH_SUMMARY}}</p></header>
+          <div class="swimlane-scroll"><div class="swimlane" style="--steps:{{FAILURE_STEP_COUNT}}">{{FAILURE_SWIMLANE}}</div></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="emotion" class="report-section" data-report-section="5">
+      <header class="section-head"><div><h2>5. 用户情绪、想法与痛点</h2><p>情绪和想法是分析判断时标为合理推断，不冒充用户原话。</p></div></header>
+      <div class="section-body">
+        <div class="grid four">{{EMOTION_CARDS}}</div>
+        <h3>痛点清单</h3>
+        <div class="table-wrap">{{PAIN_POINT_TABLE}}</div>
+      </div>
+    </section>
+
+    <section id="issues" class="report-section" data-report-section="6">
+      <header class="section-head"><div><h2>6. 三个最值得讨论的用户体验问题</h2><p>按用户影响排序，每个问题包含事实、推断或未知和需要做出的产品决定。</p></div></header>
+      <div class="section-body"><div class="grid three">{{THREE_UX_ISSUES}}</div></div>
+    </section>
+
+    <section id="opportunities" class="report-section" data-report-section="7">
+      <header class="section-head"><div><h2>7. 如果做同类产品：产品机会点</h2><p>机会属于建议设计，不回写成当前产品事实。</p></div></header>
+      <div class="section-body"><div class="grid three">{{OPPORTUNITY_CARDS}}</div></div>
+    </section>
+
+    <section id="notes" class="report-section" data-report-section="8">
+      <header class="section-head"><div><h2>8. 你的补充区</h2><p>内容只保存在当前浏览器 localStorage，不上传。</p></div></header>
+      <div class="section-body">
+        <div class="grid three">
+          <label>你观察到的用户情绪<textarea data-note-field="emotion" placeholder="补充你的观察"></textarea></label>
+          <label>你认为最严重的痛点<textarea data-note-field="pain" placeholder="补充最值得讨论的痛点"></textarea></label>
+          <label>你想继续验证的证据<textarea data-note-field="next" placeholder="补充下一步取证计划"></textarea></label>
+        </div>
+        <div class="toolbar notes-actions" style="margin-top:16px">
+          <button class="btn primary" type="button" data-notes-save>保存补充</button>
+          <button class="btn" type="button" data-notes-export>导出补充 JSON</button>
+          <button class="btn danger" type="button" data-notes-clear>清空本地补充</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="report-footer" data-stop-boundary><div class="wrap">{{STOP_BOUNDARY}} · 本报告仅基于可见证据，没有修改目标产品。</div></footer>
+  <div class="toast" data-toast aria-live="polite"></div>
+  <script src="./report-runtime.js"></script>
+</body>
+</html>

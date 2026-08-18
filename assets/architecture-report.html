@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#121212">
+  <title>{{PRODUCT_NAME}} 产品全景架构｜证据分层版</title>
+  <link rel="stylesheet" href="./report-theme.css">
+</head>
+<body data-report-profile="architecture" data-report-order="4" data-report-priority="primary" data-upstream-reports="01,02,03">
+  <header class="hero"><div class="wrap">
+    <div class="report-sequence report-sequence-primary"><span class="report-sequence-index">04 / 04</span><span>核心总报告 · 产品全景架构</span></div>
+    <p class="eyebrow">Product panorama architecture · evidence layered</p>
+    <h1>{{HERO_CONCLUSION}}</h1>
+    <p class="lead">{{EXECUTIVE_SUMMARY}}</p>
+    <div class="hero-meta"><span class="pill"><b>快照</b>{{CAPTURE_DATE}}</span><span class="pill"><b>来源</b>{{SOURCE_COUNT}}</span><span class="pill"><b>功能域</b>{{DOMAIN_COUNT}}</span><span class="pill"><b>架构终点</b>{{ARCHITECTURE_ENDPOINT}}</span></div>
+    <div class="legend"><span class="tag fact">【已确认】</span><span class="tag inference">【合理推断】</span><span class="tag recommendation">【建议设计】</span><span class="tag unknown">【未知】</span></div>
+  </div></header>
+
+  <nav class="page-nav" aria-label="页面目录"><div class="wrap">
+    <a href="#summary">摘要</a><a href="#evidence">证据</a><a href="#domains">功能域</a><a href="#e2e">端到端</a><a href="#layers">分层架构</a><a href="#agent-map">主体关系</a><a href="#context">上下文</a><a href="#knowledge">知识资产</a><a href="#models">模型路由</a><a href="#technology">底层选型</a><a href="#entities">数据实体</a><a href="#sequence">时序图</a><a href="#panorama">全景主图</a><a href="#asis">As-Is</a><a href="#tobe">To-Be</a><a href="#risks">风险</a><a href="#trace">追溯</a><a href="#unknowns">未知</a>
+  </div></nav>
+
+  <main class="wrap">
+    <section id="summary" class="report-section" data-report-section="1">
+      <header class="section-head"><div><h2>1. 执行摘要</h2><p>用一屏讲清可见产品、证据能够证明的终点、最重要冲突和建议方向。</p></div></header>
+      <div class="section-body"><div class="grid four">{{SUMMARY_METRICS}}</div><div class="callout danger">{{PRIMARY_ARCHITECTURE_RISK}}</div></div>
+    </section>
+
+    <section id="evidence" class="report-section" data-report-section="2">
+      <header class="section-head"><div><h2>2. 证据来源与证据缺口</h2><p>列出页面、截图、对象状态、官方资料、冲突和无法验证的后台实现。</p></div></header>
+      <div class="section-body"><div class="table-wrap">{{EVIDENCE_SOURCE_TABLE}}</div></div>
+    </section>
+
+    <section id="domains" class="report-section" data-report-section="3">
+      <header class="section-head"><div><h2>3. 核心功能域</h2><p>从页面名词、用户任务和对象状态归纳，不套用固定产品模块。</p></div></header>
+      <div class="section-body"><div class="grid four">{{DOMAIN_CARDS}}</div></div>
+    </section>
+
+    <section id="e2e" class="report-section" data-report-section="4">
+      <header class="section-head"><div><h2>4. 端到端功能流转表</h2><p>在同一真实任务上对齐用户、控制、工具、数据/状态和对象/结果五条流。</p></div></header>
+      <div class="section-body"><div class="table-wrap">{{END_TO_END_TABLE}}</div></div>
+    </section>
+
+    <section id="layers" class="report-section" data-report-section="5">
+      <header class="section-head"><div><h2>5. 产品分层架构</h2><p>层数自适应；无证据、无设计必要性的层不强行加入。</p></div></header>
+      <div class="section-body"><div class="architecture-layers">{{ARCHITECTURE_LAYERS}}</div></div>
+    </section>
+
+    <section id="agent-map" class="report-section" data-report-section="6">
+      <header class="section-head"><div><h2>6. Agent、工具和全局上下文关系</h2><p>没有 Agent 证据时改为角色、自动化、服务与上下文关系，并明确说明。</p></div></header>
+      <div class="section-body"><div class="diagram-scroll">{{AGENT_TOOL_CONTEXT_VISUAL}}</div><div class="table-wrap" style="margin-top:14px">{{AGENT_TOOL_CONTEXT_TABLE}}</div></div>
+    </section>
+
+    <section id="context" class="report-section" data-report-section="7">
+      <header class="section-head"><div><h2>7. 全局上下文架构</h2><p>上下文不是一个大框：记录生产者、消费者、版本、确认、状态和失效。</p></div></header>
+      <div class="section-body"><div class="table-wrap">{{GLOBAL_CONTEXT_ARCHITECTURE}}</div></div>
+    </section>
+
+    <section id="knowledge" class="report-section" data-report-section="8">
+      <header class="section-head"><div><h2>8. 知识与公共资产架构</h2><p>区分平台公共知识、用户私有数据、项目临时数据、模板和政策规则。</p></div></header>
+      <div class="section-body">{{KNOWLEDGE_ARCHITECTURE}}</div>
+    </section>
+
+    <section id="models" class="report-section" data-report-section="9">
+      <header class="section-head"><div><h2>9. 模型接入与路由架构</h2><p>仅在 AI 或规则决策产品中加入；单个可见模型不能证明完整动态路由。</p></div></header>
+      <div class="section-body"><div class="table-wrap">{{MODEL_ROUTING_TABLE}}</div>{{MODEL_NOT_APPLICABLE_REASON}}</div>
+    </section>
+
+    <section id="technology" class="report-section" data-report-section="10">
+      <header class="section-head"><div><h2>10. 底层架构选型表</h2><p>不可见实现只写能力需求、候选类别和建议理由，不伪造技术事实。</p></div></header>
+      <div class="section-body"><div class="table-wrap">{{TECHNOLOGY_SELECTION_TABLE}}</div></div>
+    </section>
+
+    <section id="entities" class="report-section" data-report-section="11">
+      <header class="section-head"><div><h2>11. 数据实体表和 ER 图</h2><p>页面概念不自动等于真实数据库表；不适用时写明原因。</p></div><button class="btn" type="button" data-copy-target="erCode">复制 ER 图</button></header>
+      <div class="section-body"><div class="table-wrap">{{ENTITY_TABLE}}</div><div class="diagram-scroll" style="margin-top:14px">{{ER_VISUAL}}</div><div class="code-wrap" style="margin-top:14px"><div class="code-head"><strong>Mermaid ER 图</strong></div><pre id="erCode" data-diagram-kind="er">{{ER_MERMAID}}</pre></div>{{ER_NOT_APPLICABLE_REASON}}</div>
+    </section>
+
+    <section id="sequence" class="report-section" data-report-section="12">
+      <header class="section-head"><div><h2>12. 端到端时序图</h2><p>覆盖正常流，并包含修改、失败或中断中的至少一种。</p></div><button class="btn" type="button" data-copy-target="sequenceCode">复制时序图</button></header>
+      <div class="section-body"><div class="diagram-scroll">{{SEQUENCE_VISUAL}}</div><div class="code-wrap" style="margin-top:14px"><div class="code-head"><strong>Mermaid sequenceDiagram</strong></div><pre id="sequenceCode" data-diagram-kind="sequence">{{SEQUENCE_MERMAID}}</pre></div>{{SEQUENCE_NOT_APPLICABLE_REASON}}</div>
+    </section>
+
+    <section id="panorama" class="report-section" data-report-section="13">
+      <header class="section-head"><div><h2>13. 产品全景架构主图</h2><p>组件按层组织，箭头使用调用、读取、写入、确认、事件和引用等动作语义。</p></div><button class="btn primary" type="button" data-copy-target="panoramaCode">复制主图</button></header>
+      <div class="section-body"><div class="diagram-scroll">{{PANORAMA_VISUAL}}</div><div class="code-wrap" style="margin-top:14px"><div class="code-head"><strong>Mermaid 全景架构</strong></div><pre id="panoramaCode" data-diagram-kind="panorama">{{PANORAMA_MERMAID}}</pre></div></div>
+    </section>
+
+    <section id="asis" class="report-section" data-report-section="14">
+      <header class="section-head"><div><h2>14. 当前架构 As-Is</h2><p>页面事实和解释可见行为所需的推导分开呈现。</p></div></header>
+      <div class="section-body"><div class="table-wrap">{{AS_IS_TABLE}}</div></div>
+    </section>
+
+    <section id="tobe" class="report-section" data-report-section="15">
+      <header class="section-head"><div><h2>15. 建议架构 To-Be</h2><p>建议必须对应已观察风险，并说明用户或系统得到什么改善。</p></div></header>
+      <div class="section-body"><div class="grid three">{{TO_BE_CARDS}}</div></div>
+    </section>
+
+    <section id="risks" class="report-section" data-report-section="16">
+      <header class="section-head"><div><h2>16. 关键架构风险</h2><p>按 P0/P1/P2 或影响×可能性排序，区分证据和建议。</p></div></header>
+      <div class="section-body"><div class="grid three">
+        <article class="risk-card" data-risk="1">{{RISK_01}}</article><article class="risk-card" data-risk="2">{{RISK_02}}</article><article class="risk-card" data-risk="3">{{RISK_03}}</article><article class="risk-card" data-risk="4">{{RISK_04}}</article><article class="risk-card" data-risk="5">{{RISK_05}}</article>{{ADDITIONAL_RISKS}}
+      </div></div>
+    </section>
+
+    <section id="trace" class="report-section" data-report-section="17">
+      <header class="section-head"><div><h2>17. 架构组件—证据追溯表</h2><p>筛选只改变显示，不改变组件证据等级。</p></div></header>
+      <div class="section-body">
+        <div class="toolbar" style="margin-bottom:14px"><button class="btn is-active" type="button" data-filter-group="architecture-trace" data-filter="all">全部</button><button class="btn" type="button" data-filter-group="architecture-trace" data-filter="confirmed">已确认</button><button class="btn" type="button" data-filter-group="architecture-trace" data-filter="inference">合理推断</button><button class="btn" type="button" data-filter-group="architecture-trace" data-filter="recommendation">建议设计</button><button class="btn" type="button" data-filter-group="architecture-trace" data-filter="unknown">未知</button></div>
+        <div class="table-wrap">{{COMPONENT_TRACE_TABLE}}</div>
+      </div>
+    </section>
+
+    <section id="unknowns" class="report-section" data-report-section="18">
+      <header class="section-head"><div><h2>18. 仍然无法确认的问题</h2><p>说明需要什么页面、日志、官方材料或授权测试才能回答。</p></div></header>
+      <div class="section-body">{{UNRESOLVED_ARCHITECTURE_QUESTIONS}}</div>
+    </section>
+  </main>
+
+  <footer class="report-footer" data-stop-boundary><div class="wrap">{{STOP_BOUNDARY}} · 所有组件均分为已确认、合理推断、建议设计或未知，没有修改目标产品。</div></footer>
+  <div class="toast" data-toast aria-live="polite"></div>
+  <script src="./report-runtime.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#121212">
+  <title>{{PRODUCT_NAME}} Agent 契约｜页面证据版</title>
+  <link rel="stylesheet" href="./report-theme.css">
+</head>
+<body data-report-profile="agent-contract" data-report-order="2">
+  <header class="hero"><div class="wrap">
+    <div class="report-sequence"><span class="report-sequence-index">02 / 04</span><span>Agent 契约 · 页面证据</span></div>
+    <p class="eyebrow">Product reverse engineering · agent contracts</p>
+    <h1>{{HERO_CONCLUSION}}</h1>
+    <p class="lead">{{EXECUTIVE_SUMMARY}}</p>
+    <div class="hero-meta"><span class="pill"><b>快照</b>{{CAPTURE_DATE}}</span><span class="pill"><b>来源</b>{{SOURCE_COUNT}}</span><span class="pill"><b>实际主体</b>{{AGENT_COUNT}}</span><span class="pill"><b>证据终点</b>{{EVIDENCE_ENDPOINT}}</span></div>
+    <div class="legend"><span class="tag fact">【已确认】</span><span class="tag inference">【合理推断】</span><span class="tag unknown">【未知】</span><span class="tag recommendation">计划不等于执行</span></div>
+  </div></header>
+
+  <nav class="page-nav" aria-label="页面目录"><div class="wrap">
+    <a href="#scope">范围与缺口</a><a href="#agents">Agent 清单</a><a href="#contracts">I/O 契约卡</a><a href="#tools">工具总表</a><a href="#context">上下文字段</a><a href="#relations">生产者—消费者</a><a href="#flow">交接流程</a><a href="#ledger">事实/推断/未知</a><a href="#verify">验证问题</a>
+  </div></nav>
+
+  <main class="wrap">
+    <section id="scope" class="report-section" data-report-section="1">
+      <header class="section-head"><div><h2>1. 查看范围与证据缺口</h2><p>说明本轮识别依据、访问限制和不能由页面证明的内部实现。</p></div></header>
+      <div class="section-body"><div class="grid three">{{SCOPE_CARDS}}</div><div class="callout">{{PRIMARY_LIMITATION}}</div></div>
+    </section>
+
+    <section id="agents" class="report-section" data-report-section="2">
+      <header class="section-head"><div><h2>2. Agent 清单</h2><p>只列本场景有证据的界面身份、具名 Agent 或可归属自动化；未观察主体单列。</p></div></header>
+      <div class="section-body"><div class="grid four">{{AGENT_TILES}}</div><h3>本场景未观察到的主体</h3>{{UNOBSERVED_AGENTS}}</div>
+    </section>
+
+    <section id="contracts" class="report-section" data-report-section="3">
+      <header class="section-head"><div><h2>3. 每个 Agent 的 I/O 契约卡</h2><p>每张卡固定十段；搜索和筛选不会改动原始内容或证据等级。</p></div></header>
+      <div class="section-body">
+        <div class="toolbar" style="margin-bottom:16px">
+          <input class="search" type="search" data-contract-search placeholder="搜索 Agent、字段、工具或证据" aria-label="搜索 Agent 契约">
+          <button class="btn is-active" type="button" data-filter-group="contracts" data-filter="all">全部</button>
+          <button class="btn" type="button" data-filter-group="contracts" data-filter="fact">含已确认</button>
+          <button class="btn" type="button" data-filter-group="contracts" data-filter="inference">含推断</button>
+          <button class="btn" type="button" data-filter-group="contracts" data-filter="unknown">含未知</button>
+          <button class="btn" type="button" data-contract-open-all>全部展开</button>
+          <button class="btn" type="button" data-contract-close-all>全部收起</button>
+        </div>
+
+        <details class="contract" data-contract-card data-filter-item="contracts" data-level="fact inference unknown" data-keywords="{{AGENT_KEYWORDS}}">
+          <summary><span class="rank">{{AGENT_INDEX}}</span><strong>{{AGENT_NAME}}</strong><span class="tag fact">{{AGENT_TYPE}}</span></summary>
+          <div class="contract-body">
+            <section class="contract-section" data-contract-section="1"><h3>1. 核心目标</h3>{{AGENT_GOAL}}</section>
+            <section class="contract-section" data-contract-section="2"><h3>2. 触发条件</h3>{{AGENT_TRIGGER_AND_HANDOFF}}</section>
+            <section class="contract-section" data-contract-section="3"><h3>3. 输入信息</h3><div class="table-wrap">{{AGENT_INPUT_TABLE}}</div></section>
+            <section class="contract-section" data-contract-section="4"><h3>4. 可观察判断</h3>{{AGENT_JUDGMENTS}}</section>
+            <section class="contract-section" data-contract-section="5"><h3>5. 调用工具</h3><div class="table-wrap">{{AGENT_TOOL_TABLE}}</div></section>
+            <section class="contract-section" data-contract-section="6"><h3>6. 输出信息</h3><div class="table-wrap">{{AGENT_OUTPUT_TABLE}}</div></section>
+            <section class="contract-section" data-contract-section="7"><h3>7. 全局上下文读写</h3><div class="table-wrap">{{AGENT_CONTEXT_TABLE}}</div></section>
+            <section class="contract-section" data-contract-section="8"><h3>8. 完成条件</h3>{{AGENT_COMPLETION}}</section>
+            <section class="contract-section" data-contract-section="9"><h3>9. 异常与重试</h3>{{AGENT_EXCEPTIONS}}</section>
+            <section class="contract-section" data-contract-section="10"><h3>10. 尚未确认的问题</h3>{{AGENT_UNKNOWNS}}</section>
+          </div>
+        </details>
+        {{ADDITIONAL_AGENT_CONTRACTS}}
+      </div>
+    </section>
+
+    <section id="tools" class="report-section" data-report-section="4">
+      <header class="section-head"><div><h2>4. 工具总表</h2><p>功能命名不冒充官方函数名，计划、运行结果、对象结果和下游消费分级。</p></div></header>
+      <div class="section-body"><div class="table-wrap">{{TOOL_MASTER_TABLE}}</div></div>
+    </section>
+
+    <section id="context" class="report-section" data-report-section="5">
+      <header class="section-head"><div><h2>5. 全局上下文字段表</h2><p>记录生产者、消费者、版本、确认、失效和状态冲突。</p></div></header>
+      <div class="section-body"><div class="table-wrap">{{GLOBAL_CONTEXT_TABLE}}</div></div>
+    </section>
+
+    <section id="relations" class="report-section" data-report-section="6">
+      <header class="section-head"><div><h2>6. 数据生产者—消费者关系表</h2><p>检查多版本、稳定引用、上游修改后的失效和孤儿字段。</p></div></header>
+      <div class="section-body"><div class="table-wrap">{{PRODUCER_CONSUMER_TABLE}}</div></div>
+    </section>
+
+    <section id="flow" class="report-section" data-report-section="7">
+      <header class="section-head"><div><h2>7. Agent 输入—判断—工具—输出—交接流程图</h2><p>每个主体注明能力边界、确认门和失败后的处理方式。</p></div><button class="btn" type="button" data-copy-target="agentFlowCode">复制源码</button></header>
+      <div class="section-body"><div class="diagram-scroll">{{AGENT_FLOW_VISUAL}}</div><div class="code-wrap"><div class="code-head"><strong>可编辑 Mermaid</strong></div><pre id="agentFlowCode">{{AGENT_FLOW_MERMAID}}</pre></div></div>
+    </section>
+
+    <section id="ledger" class="report-section" data-report-section="8">
+      <header class="section-head"><div><h2>8. 事实、推断和未知事项清单</h2><p>三类结论并列展示，冲突不被静默消解。</p></div></header>
+      <div class="section-body"><div class="grid three">{{FACT_INFERENCE_UNKNOWN_CARDS}}</div></div>
+    </section>
+
+    <section id="verify" class="report-section" data-report-section="9">
+      <header class="section-head"><div><h2>9. 最值得继续验证的五个问题</h2><p>每个问题说明价值、最小验证动作和可能改变的结论。</p></div></header>
+      <div class="section-body"><ol>{{FIVE_VALIDATION_QUESTIONS}}</ol></div>
+    </section>
+  </main>
+
+  <footer class="report-footer" data-stop-boundary><div class="wrap">{{STOP_BOUNDARY}} · 本轮只形成 Agent 契约，没有编写完整 System Prompt，也没有修改目标产品。</div></footer>
+  <div class="toast" data-toast aria-live="polite"></div>
+  <script src="./report-runtime.js"></script>
+</body>
+</html>

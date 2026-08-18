@@ -1,0 +1,4 @@
+interface:
+  display_name: "产品逆向拆解"
+  short_description: "从页面证据生成用户旅程、Agent 契约、Prompt 与架构 HTML"
+  default_prompt: "使用 $product-reverse-engineering 从真实页面证据完整拆解此产品，在一次任务中按 01 用户旅程、02 Agent 契约、03 单主体功能等价 Prompt、04 产品全景架构的顺序生成四份中文 HTML；逐份校验，04 最后生成并作为核心总报告，四份齐全后再交付。"

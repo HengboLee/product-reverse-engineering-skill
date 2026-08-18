@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#121212">
+  <title>{{PRODUCT_NAME}} {{AGENT_NAME}}｜功能等价 System Prompt</title>
+  <link rel="stylesheet" href="./report-theme.css">
+</head>
+<body data-report-profile="functional-prompt" data-report-order="3">
+  <header class="hero"><div class="wrap">
+    <div class="report-sequence"><span class="report-sequence-index">03 / 04</span><span>功能等价 Prompt · 证据追溯</span></div>
+    <p class="eyebrow">Functional-equivalent system prompt · evidence traced</p>
+    <h1>{{AGENT_NAME}}：功能等价 System Prompt</h1>
+    <p class="lead">{{EXECUTIVE_SUMMARY}}</p>
+    <div class="hero-meta"><span class="pill"><b>目标 Agent</b>{{AGENT_NAME}}</span><span class="pill"><b>快照</b>{{CAPTURE_DATE}}</span><span class="pill"><b>直接证据</b>{{DIRECT_EVIDENCE_COUNT}}</span><span class="pill"><b>下游</b>{{DOWNSTREAM_NAME}}</span></div>
+    <div class="legend"><span class="tag fact">【事实规则】</span><span class="tag inference">【推断规则】</span><span class="tag recommendation">【建议规则】</span><span class="tag unknown">【未知】</span></div>
+  </div></header>
+
+  <nav class="page-nav" aria-label="页面目录"><div class="wrap">
+    <a href="#evidence">证据范围</a><a href="#inputs">输入契约</a><a href="#outputs">输出契约</a><a href="#tools">工具契约</a><a href="#states">状态机</a><a href="#rules">规则分层</a><a href="#prompt">System Prompt</a><a href="#trace">追溯表</a><a href="#tests">测试集</a><a href="#unknown">未知问题</a>
+  </div></nav>
+
+  <main class="wrap">
+    <section id="evidence" class="report-section" data-report-section="1">
+      <header class="section-head"><div><h2>1. 目标 Agent 的证据范围</h2><p>先回答边界十问，再进入输入、工具和规则设计。</p></div></header>
+      <div class="section-body">
+        <div class="grid three">{{EVIDENCE_SCOPE_CARDS}}</div>
+        <h3>Agent 边界十问</h3>
+        <div class="grid two">
+          <article class="boundary-card" data-boundary-question="1"><span class="rank">01</span><h3>它解决什么问题？</h3>{{BOUNDARY_01}}</article>
+          <article class="boundary-card" data-boundary-question="2"><span class="rank">02</span><h3>从什么时候接管？</h3>{{BOUNDARY_02}}</article>
+          <article class="boundary-card" data-boundary-question="3"><span class="rank">03</span><h3>谁触发它？</h3>{{BOUNDARY_03}}</article>
+          <article class="boundary-card" data-boundary-question="4"><span class="rank">04</span><h3>完成后交给谁？</h3>{{BOUNDARY_04}}</article>
+          <article class="boundary-card" data-boundary-question="5"><span class="rank">05</span><h3>哪些工作属于它？</h3>{{BOUNDARY_05}}</article>
+          <article class="boundary-card" data-boundary-question="6"><span class="rank">06</span><h3>哪些工作不属于它？</h3>{{BOUNDARY_06}}</article>
+          <article class="boundary-card" data-boundary-question="7"><span class="rank">07</span><h3>修改会重新触发吗？</h3>{{BOUNDARY_07}}</article>
+          <article class="boundary-card" data-boundary-question="8"><span class="rank">08</span><h3>哪些情况必须停止？</h3>{{BOUNDARY_08}}</article>
+          <article class="boundary-card" data-boundary-question="9"><span class="rank">09</span><h3>哪些情况可以自动继续？</h3>{{BOUNDARY_09}}</article>
+          <article class="boundary-card" data-boundary-question="10"><span class="rank">10</span><h3>哪些动作必须等待确认？</h3>{{BOUNDARY_10}}</article>
+        </div>
+      </div>
+    </section>
+
+    <section id="inputs" class="report-section" data-report-section="2">
+      <header class="section-head"><div><h2>2. 输入契约</h2><p>逐项检查用户当前输入、长期信息、项目上下文、上游产物、平台公共信息和运行时结果。</p></div></header>
+      <div class="section-body"><div class="table-wrap">{{INPUT_CONTRACT_TABLE}}</div></div>
+    </section>
+
+    <section id="outputs" class="report-section" data-report-section="3">
+      <header class="section-head"><div><h2>3. 输出契约</h2><p>覆盖用户回复、页面组件、资产、上下文写入和下游任务。</p></div></header>
+      <div class="section-body"><div class="table-wrap">{{OUTPUT_CONTRACT_TABLE}}</div></div>
+    </section>
+
+    <section id="tools" class="report-section" data-report-section="4">
+      <header class="section-head"><div><h2>4. 工具契约</h2><p>只使用有证据的工具；功能命名必须注明非官方工具名。</p></div></header>
+      <div class="section-body"><div class="grid two">{{TOOL_CARDS}}</div><div class="callout">{{TOOL_RISK_NOTE}}</div></div>
+    </section>
+
+    <section id="states" class="report-section" data-report-section="5">
+      <header class="section-head"><div><h2>5. 状态机</h2><p>规定每个状态的进入条件、允许和禁止动作、退出条件和状态写入。</p></div><button class="btn" type="button" data-copy-target="stateCode">复制 Mermaid</button></header>
+      <div class="section-body"><div class="diagram-scroll">{{STATE_MACHINE_VISUAL}}</div><div class="grid three" style="margin:16px 0">{{STATE_CARDS}}</div><div class="code-wrap"><div class="code-head"><strong>Mermaid 状态图</strong></div><pre id="stateCode" data-diagram-kind="state">{{STATE_MACHINE_MERMAID}}</pre></div></div>
+    </section>
+
+    <section id="rules" class="report-section" data-report-section="6">
+      <header class="section-head"><div><h2>6. 事实规则、推断规则、建议规则</h2><p>未知事项不进入强制规则；每条规则都有稳定 ID。</p></div></header>
+      <div class="section-body"><div class="grid two">
+        <article class="rule-card" data-rule-class="fact"><span class="tag fact">【事实规则】</span>{{FACT_RULES}}</article>
+        <article class="rule-card" data-rule-class="inference"><span class="tag inference">【推断规则】</span>{{INFERENCE_RULES}}</article>
+        <article class="rule-card" data-rule-class="recommendation"><span class="tag recommendation">【建议规则】</span>{{RECOMMENDATION_RULES}}</article>
+        <article class="rule-card" data-rule-class="unknown"><span class="tag unknown">【未知】</span>{{UNKNOWN_RULES}}</article>
+      </div></div>
+    </section>
+
+    <section id="prompt" class="report-section" data-report-section="7">
+      <header class="section-head"><div><h2>7. 功能等价 System Prompt</h2><p>可直接使用，但不冒充产品官方原文。</p></div><button class="btn primary" type="button" data-copy-target="systemPrompt">复制 Prompt</button></header>
+      <div class="section-body"><div class="code-wrap"><div class="code-head"><strong>System Prompt · {{AGENT_NAME}}</strong></div><pre id="systemPrompt"><code>Agent名称：{{AGENT_NAME}}
+
+<span data-prompt-section="1">1. 角色</span>
+{{PROMPT_ROLE}}
+
+<span data-prompt-section="2">2. 核心目标</span>
+{{PROMPT_GOAL}}
+
+<span data-prompt-section="3">3. 任务边界</span>
+{{PROMPT_BOUNDARY}}
+
+<span data-prompt-section="4">4. 输入契约</span>
+{{PROMPT_INPUT}}
+
+<span data-prompt-section="5">5. 全局上下文协议</span>
+{{PROMPT_CONTEXT}}
+
+<span data-prompt-section="6">6. 工作流程</span>
+{{PROMPT_WORKFLOW}}
+
+<span data-prompt-section="7">7. 工具调用规范</span>
+{{PROMPT_TOOLS}}
+
+<span data-prompt-section="8">8. 用户确认机制</span>
+{{PROMPT_CONFIRMATION}}
+
+<span data-prompt-section="9">9. 结果验证</span>
+{{PROMPT_VALIDATION}}
+
+<span data-prompt-section="10">10. 修改与回退</span>
+{{PROMPT_REVISION}}
+
+<span data-prompt-section="11">11. 异常处理</span>
+{{PROMPT_EXCEPTIONS}}
+
+<span data-prompt-section="12">12. 状态机</span>
+{{PROMPT_STATE_MACHINE}}
+
+<span data-prompt-section="13">13. 下游交接</span>
+{{PROMPT_HANDOFF}}
+
+<span data-prompt-section="14">14. 完成条件</span>
+{{PROMPT_COMPLETION}}
+
+<span data-prompt-section="15">15. 输出格式</span>
+{{PROMPT_OUTPUT_FORMAT}}</code></pre></div></div>
+    </section>
+
+    <section id="trace" class="report-section" data-report-section="8">
+      <header class="section-head"><div><h2>8. 规则—证据追溯表</h2><p>覆盖所有事实、推断和建议规则。</p></div></header>
+      <div class="section-body"><div class="table-wrap">{{RULE_TRACE_TABLE}}</div></div>
+    </section>
+
+    <section id="tests" class="report-section" data-report-section="9">
+      <header class="section-head"><div><h2>9. 最小测试集</h2><p>每条测试包含输入、初始状态、预期判断、工具、状态变化和禁止行为。</p></div></header>
+      <div class="section-body"><div class="table-wrap"><table><thead><tr><th>测试</th><th>输入</th><th>初始状态</th><th>预期判断</th><th>预期工具</th><th>状态变化</th><th>禁止行为</th></tr></thead><tbody>
+        <tr data-test-case="normal">{{TEST_NORMAL}}</tr>
+        <tr data-test-case="missing-input">{{TEST_MISSING_INPUT}}</tr>
+        <tr data-test-case="local-revision">{{TEST_LOCAL_REVISION}}</tr>
+        <tr data-test-case="tool-failure">{{TEST_TOOL_FAILURE}}</tr>
+        <tr data-test-case="interrupted">{{TEST_INTERRUPTED}}</tr>
+        <tr data-test-case="state-conflict">{{TEST_STATE_CONFLICT}}</tr>
+        {{ADDITIONAL_TEST_CASES}}
+      </tbody></table></div></div>
+    </section>
+
+    <section id="unknown" class="report-section" data-report-section="10">
+      <header class="section-head"><div><h2>10. 仍然无法确认的问题</h2><p>未知不写入强制 Prompt；给出最小补证动作。</p></div></header>
+      <div class="section-body">{{UNRESOLVED_QUESTIONS}}</div>
+    </section>
+  </main>
+
+  <footer class="report-footer" data-stop-boundary><div class="wrap">{{STOP_BOUNDARY}} · 本报告不是官方 System Prompt，不继续拆其他 Agent，也没有修改目标产品。</div></footer>
+  <div class="toast" data-toast aria-live="polite"></div>
+  <script src="./report-runtime.js"></script>
+</body>
+</html>
